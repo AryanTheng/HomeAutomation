@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Automation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Room Automation</h1>
+
+        <div class="slider-container">
+            <div class="slider-label">Fan</div>
+            <label class="switch">
+                <input type="checkbox" id="light1" onchange="toggleLight(1)">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="slider-container">
+            <div class="slider-label">Light 2</div>
+            <label class="switch">
+                <input type="checkbox" id="light2" onchange="toggleLight(2)">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="slider-container">
+            <div class="slider-label">Light 3</div>
+            <label class="switch">
+                <input type="checkbox" id="light3" onchange="toggleLight(3)">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="slider-container">
+            <div class="slider-label">Light 4</div>
+            <label class="switch">
+                <input type="checkbox" id="light4" onchange="toggleLight(4)">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        // Function to send an HTTP request to the Flask server to control lights
+        function toggleLight(lightNumber) {
+            var isOn = document.getElementById("light" + lightNumber).checked;
+            var url = isOn ? "/light" + lightNumber + "/on" : "/light" + lightNumber + "/off";
+            fetch(url)
+                .then(response => response.text())
+                .then(data => console.log(data));
+        }
+    </script>
+</body>
+</html>
