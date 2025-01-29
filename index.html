@@ -44,15 +44,8 @@
         </div>
     </div>
 
-    <script>
-        // Function to send an HTTP request to the Flask server to control lights
-        function toggleLight(lightNumber) {
-            var isOn = document.getElementById("light" + lightNumber).checked;
-            var url = isOn ? "/light" + lightNumber + "/on" : "/light" + lightNumber + "/off";
-            fetch(url)
-                .then(response => response.text())
-                .then(data => console.log(data));
-        }
+    <script src="app.js">
+       
     </script>
 </body>
 </html>
